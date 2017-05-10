@@ -31,12 +31,6 @@ end
 
 
 
-class Tenant
-
-end	
-
-
-
 
 
 
