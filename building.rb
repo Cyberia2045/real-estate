@@ -1,26 +1,38 @@
-class Building
+class Development
 
-	def initialize
-		@floors = 10
-		@units = 50
+	def initialize(floors)
+		@floors = floors
 	end
+
 end
 
-class TopFloors
+class Space
 
-	def initialize
-		@leased = true
-		@HOA = cost * 0.2
-		super()
-	end
+end	
 
-	def Floor10
-		@cost = 2000
-		@units = 5
-	end
+class Condo < Space
 
-	def Floor9
-		@cost = 1800
-		@units = 5
-	end
 end
+
+class Apartment < Space
+
+end
+
+class Commercial < Space
+
+end
+
+class Tenant
+
+end	
+
+
+
+
+
+
+
+
+
+
+
