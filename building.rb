@@ -1,6 +1,8 @@
 # apartment base rate is 700
 # +300 per bedroom
 
+require "./space.rb"
+
 class Development
 
 	attr_reader :floors
@@ -11,21 +13,9 @@ class Development
 
 end
 
-class Space
-
-end	
-
-def calculate_rate
-	base_rate = 700
-	room_premium = 300 * @bedroom
-	floor_premium = 30 * @floor
-
-	base_rate + room_premium + floor_premium
-end
-
 class Floor
 
-	attr_reader :units
+	attr_reader :units, :spaces
 
 	def initialize(units)
 		@units = units
@@ -34,47 +24,12 @@ class Floor
 
 	def add_space(space)
 		@spaces.push(space)
-		if space.class == "Restaurant"
-			@units -= 2
-		else
-			@units -= 1
-		end
+		@units -= space.unit_count	
 	end
 
 end
 
-class Condo < Space
-	def initialize
-		@bedrooms = 2
-	end
-end
 
-class Apartment < Space
-
-	attr_reader :bedrooms, :rate, :floor
-
-	def initialize(bedrooms, floor)
-		@bedrooms = bedrooms
-		@floor = floor
-		@rate = calculate_rate
-	end
-end
-
-class Commercial < Space
-	
-	attr_reader :unit_count
-
-	def initialize
-		@unit_count
-	end
-end
-
-class Restaurant < Commercial
-
-	def initialize
-		@unit_count = 2
-	end
-end
 
 class Tenant
 
