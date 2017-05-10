@@ -1,3 +1,6 @@
+# apartment base rate is 700
+# +300 per bedroom
+
 class Development
 
 	attr_reader :floors
@@ -12,12 +15,26 @@ class Space
 
 end	
 
+def calculate_rate
+	base_rate = 700
+	room_premium = 300 * @bedroom
+	floor_premium = 30 * @floor
+
+	base_rate + room_premium + floor_premium
+end
+
 class Condo < Space
-	@bedrooms = 2
+	def initialize
+		@bedrooms = 2
+	end
 end
 
 class Apartment < Space
-
+	def initialize(bedrooms, floor)
+		@bedrooms = bedrooms
+		@floor = floor
+		@rate = calculate_rate
+	end
 end
 
 class Commercial < Space
