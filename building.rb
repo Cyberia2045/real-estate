@@ -29,7 +29,18 @@ class Floor
 
 	def initialize(units)
 		@units = units
+		@spaces = []
 	end
+
+	def add_space(space)
+		@spaces.push(space)
+		if space.class == "Restaurant"
+			@units -= 2
+		else
+			@units -= 1
+		end
+	end
+
 end
 
 class Condo < Space
@@ -50,7 +61,19 @@ class Apartment < Space
 end
 
 class Commercial < Space
+	
+	attr_reader :unit_count
 
+	def initialize
+		@unit_count
+	end
+end
+
+class Restaurant < Commercial
+
+	def initialize
+		@unit_count = 2
+	end
 end
 
 class Tenant
