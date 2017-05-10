@@ -23,6 +23,15 @@ def calculate_rate
 	base_rate + room_premium + floor_premium
 end
 
+class Floor
+
+	attr_reader :units
+
+	def initialize(units)
+		@units = units
+	end
+end
+
 class Condo < Space
 	def initialize
 		@bedrooms = 2
@@ -30,6 +39,9 @@ class Condo < Space
 end
 
 class Apartment < Space
+
+	attr_reader :bedrooms, :rate, :floor
+
 	def initialize(bedrooms, floor)
 		@bedrooms = bedrooms
 		@floor = floor
