@@ -1,5 +1,7 @@
 class Development
 
+	attr_reader :floors
+
 	def initialize(floors)
 		@floors = floors
 	end
@@ -11,7 +13,7 @@ class Space
 end	
 
 class Condo < Space
-
+	@bedrooms = 2
 end
 
 class Apartment < Space
