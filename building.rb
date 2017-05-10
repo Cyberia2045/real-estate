@@ -1,5 +1,9 @@
 class Development
 
+	def initialize(floors)
+		@floors = floors
+	end
+
 end
 
 class Space
